@@ -9,6 +9,7 @@ class ProgressBar {
       height = 20,
       textColor = 'white',
       border = '2px solid black',
+      showText = true,
     } = option
 
     this.start = start;
@@ -17,6 +18,7 @@ class ProgressBar {
     this.height = height;
     this.textColor = textColor;
     this.border = border;
+    this.showText = showText;
   }
 
   init(selector) {
@@ -31,7 +33,6 @@ class ProgressBar {
     progressBar.style.border = this.border;
     this.animateBar(bar);
     return progressBar;
-
   }
 
   createBar() {
@@ -51,7 +52,7 @@ class ProgressBar {
 
   stateProgress(elem) {
     elem.style.width = `${this.start}%`;
-    elem.textContent = `${this.start}%`
+    elem.textContent = `${this.showText ? this.start+ '%': ''}`
   }
 
   animateBar(bar) {
@@ -64,4 +65,26 @@ class ProgressBar {
     };
     requestAnimationFrame(animate);
   }
+}
+
+
+class RoundedProgressBar extends ProgressBar {
+  constructor(option = {}){
+    super(option)
+    const {rounded= '30px'} = option;
+    this.rounded = rounded;
+  }
+
+  createProgressBar() {
+    const progressBar = super.createProgressBar();
+    this.roundedBar(progressBar);
+    return progressBar;
+  }
+
+  roundedBar(elem) {
+    elem.style.borderRadius = this.rounded;
+    elem.firstChild.style.borderRadius = this.rounded;
+
+  }
+
 }
