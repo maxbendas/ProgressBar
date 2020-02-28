@@ -23,7 +23,7 @@
 
   <script>
 
-    const newBar = new ProgressBar({
+    const newBar = new RoundedProgressBar({
       start: 30,
     });
 
@@ -31,18 +31,21 @@
 
     const newBar2 = new ProgressBar({
       start: 50,
-      bg: 'blue'
+      bg: 'blue',
+      end: 60,
+      showText: false,
     });
 
     newBar2.init('.progress-bar2');
 
-    const newBar3 = new ProgressBar({
+    const newBar3 = new RoundedProgressBar({
       start: 0,
-      end: 100,
+      end: 80,
       bg: 'red',
-      height: 20,
+      height: 15,
       textColor: 'white',
-      border: '2px solid black',
+      border: '2px solid green',
+      rounded: '30px',
     });
 
     newBar3.init('.progress-bar3');
